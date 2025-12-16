@@ -4,14 +4,15 @@ services:
   web:
     depends_on:
       - api
-    build: ./Client/magic-stream-client
+    image: gavinlon/magic-stream-web:1.0.0
+    container_name: magic-stream-web
     ports:
       - "5173:80"
       # - "5173:5173"
       
 
     environment:
-      VITE_API_BASE_URL: "http://localhost:8080"
+      VITE_API_BASE_URL: "http://${API_HOST_IP}:8080"
 
     # develop:
     #   watch:
@@ -26,7 +27,8 @@ services:
   api:
     depends_on:
       - db
-    build: ./Server/MagicStreamServer
+    image: gavinlon/magic-stream-api:1.0.0
+    container_name: magic-stream-api
     ports:
       - "8080:8080"
 
@@ -43,7 +45,7 @@ services:
       MONGODB_URI: "mongodb://db:27017"
       #MONGODB_URI: "mongodb://host.docker.internal:27017"
       DATABASE_NAME: "magic-stream-movies"
-      ALLOWED_ORIGINS: "http://localhost:3000,http://localhost:5173,http://localhost:8080"
+      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS}"
 
     # develop:
     #   watch:
