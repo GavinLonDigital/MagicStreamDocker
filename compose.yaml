@@ -4,7 +4,7 @@ services:
   web:
     depends_on:
       - api
-    image: gavinlon/magic-stream-web:1.0.0
+    image: gavinlon/magic-stream-web:1.0.2
     container_name: magic-stream-web
     ports:
       - "5173:80"
@@ -12,7 +12,7 @@ services:
       
 
     environment:
-      VITE_API_BASE_URL: "http://${API_HOST_IP}:8080"
+      API_URL: "http://${API_HOST_IP}:8080"
 
     # develop:
     #   watch:
@@ -27,7 +27,7 @@ services:
   api:
     depends_on:
       - db
-    image: gavinlon/magic-stream-api:1.0.0
+    image: gavinlon/magic-stream-api:1.0.2
     container_name: magic-stream-api
     ports:
       - "8080:8080"
