@@ -9,6 +9,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Show API context files
+        run: ls -la Server/MagicStreamServer || true
+
+      - name: Show Web context files
+        run: ls -la Client/magic-stream-client || true
+        
       - name: Checkout repository
         uses: actions/checkout@v4
 
