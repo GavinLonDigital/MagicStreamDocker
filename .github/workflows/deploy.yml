@@ -32,7 +32,7 @@ jobs:
       - name: Build & push API image
         uses: docker/build-push-action@v6
         with:
-          context: ./Server/MagicStreamServer
+          context: Server/MagicStreamServer
           file: Dockerfile.prod
           push: true
           tags: gavinlon/magic-stream-api:${{ steps.meta.outputs.version }}
@@ -40,7 +40,7 @@ jobs:
       - name: Build & push Web image
         uses: docker/build-push-action@v6
         with:
-          context: ./Client/magic-stream-client
+          context: Client/magic-stream-client
           file: Dockerfile.prod
           push: true
           tags: gavinlon/magic-stream-web:${{ steps.meta.outputs.version }}
