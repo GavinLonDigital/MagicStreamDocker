@@ -1,10 +1,10 @@
 services:
   web:
-    image: gavinlon/magic-stream-web:1.0.2
+    image: gavinlon/magic-stream-web:${IMAGE_TAG:-latest}
     ports: 
       - "5173:80"
     restart: always
 
   api:
-    image: gavinlon/magic-stream-api:1.0.2
+    image: gavinlon/magic-stream-api:${IMAGE_TAG:-latest}
     restart: always
